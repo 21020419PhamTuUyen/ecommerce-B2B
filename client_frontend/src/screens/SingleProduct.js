@@ -83,27 +83,18 @@ const SingleProduct = ({ history, match }) => {
 
                   <div className="product-count col-lg-7 ">
                   <div className="flex-box d-flex justify-content-between align-items-center">
-                      <h6>Shop: </h6>
+                      <h4>Brand: </h4>
                       <p>
                           <Link to={`/products/shops/${product.shop_name}`}
                           className="text-capitalize"
                           // bold
-                          style={{ color: "blue", fontWeight: "bold"}}
+                          style={{ color: "black", fontWeight: "bold", fontSize: '24px'}}
                           >
-                                {product.shop_name}
+                                {product.Brand}
                           </Link>
                       </p>
                     </div>
-                    <div className="flex-box d-flex justify-content-between align-items-center">
-                      <h6>Price</h6>
-                      <span>${product.price}</span>
-                    </div>
-                    <div className="flex-box d-flex justify-content-between align-items-center">
-                      <h6>Brand/Color: </h6>
-                      <span>{product.Brand}/{product.Color}</span>
-                    </div>
                     
-
                     <div className="flex-box d-flex justify-content-between align-items-center">
                       <h6>Status</h6>
                       {product.countInStock > 0 ? (
@@ -119,31 +110,16 @@ const SingleProduct = ({ history, match }) => {
                         text={`${product.numReviews} reviews`}
                       />
                     </div>
-                    {product.countInStock > 0 ? (
-                      <>
-                        <div className="flex-box d-flex justify-content-between align-items-center">
-                          <h6>Quantity</h6>
-                          <select
-                            value={qty}
-                            onChange={(e) => setQty(e.target.value)}
-                          >
-                            {[...Array(product.countInStock).keys()].map(
-                              (x) => (
-                                <option key={x + 1} value={x + 1}>
-                                  {x + 1}
-                                </option>
-                              )
-                            )}
-                          </select>
-                        </div>
-                        <button
-                          onClick={AddToCartHandle}
-                          className="round-black-btn"
-                        >
-                          Add To Cart
-                        </button>
-                      </>
-                    ) : null}
+                    <button
+                        onClick={AddToCartHandle}
+                        className="round-black-btn"
+                      >
+                        
+                        <i className="fa fa-phone"></i>
+
+                        {` Contact to ${product.Brand}`} 
+                      </button>
+                
                   </div>
                 </div>
               </div>
@@ -171,7 +147,7 @@ const SingleProduct = ({ history, match }) => {
                 ))}
               </div>
               <div className="col-md-6">
-                <h6>WRITE A CUSTOMER REVIEW</h6>
+                <h6>WRITE PARTNERS' REVIEW</h6>
                 <div className="my-4">
                   {loadingCreateReview && <Loading />}
                   {errorCreateReview && (
@@ -189,7 +165,7 @@ const SingleProduct = ({ history, match }) => {
                         onChange={(e) => setRating(e.target.value)}
                         className="col-12 bg-light p-3 mt-2 border-0 rounded"
                       >
-                        <option value="">Select...</option>
+                        <option value="">Select</option>
                         <option value="1">1 - Poor</option>
                         <option value="2">2 - Fair</option>
                         <option value="3">3 - Good</option>
@@ -241,7 +217,7 @@ const SingleProduct = ({ history, match }) => {
         )}
         {/* console.log */}          
       </div>
-      <RecommendProducts keyword={product._id} />
+      <RecommendProducts/>
     </>
   );
 };

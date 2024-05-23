@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 // name, rating, price, brand, gender, shop, color, sort
 const FilterBar = () => {
   // const filter = [name, rating, price, brand, gender, shop, color, sort];
-  const filter = ["name", "price_max","price_min", "brand", "shop", "color", "gender", "order by"];
+  const filter = ["name", "brand", "shop", "color", "gender", "order by"];
   const [keyword, setKeyword] = useState();
   const dispatch = useDispatch();
   let history = useHistory();
@@ -50,27 +50,6 @@ const FilterBar = () => {
               className="form-control"
               id="name"
               onChange={handleInput("name")}
-            />
-          </div>
-          <div className="filter-by-option__item">
-            <span className="filter-by-option__item__title"></span>
-            <input
-              type="number"
-                placeholder="Price min"
-              className="form-control"
-              id="price_min"
-              // value={filters.price}
-              onChange={handleInput("price_min")}
-            />
-          </div>
-          <div className="filter-by-option__item">
-            <span className="filter-by-option__item__title"></span>
-            <input
-              type="number"
-                placeholder="Price max"
-              className="form-control"
-              id="price_max"
-              onChange={handleInput("price_max")}
             />
           </div>
           <div className="filter-by-option__item">
@@ -137,15 +116,13 @@ const FilterBar = () => {
             >
               <option>Order by</option>
               <option value="Name">Name</option>
-              <option value="Price_high">Price high</option>
-              <option value="Price_low">Price low</option>
               <option value="Rating_high">Rating high</option> 
               <option value="Rating_low">Rating low</option>            
             </select>
           </div>
 
-          <button type="submit" className="btn btn-primary">
-            Search
+          <button type="submit" className="btn btn-primary w-[12.5%]">
+            Filtering
           </button>
         </div>
       </div>

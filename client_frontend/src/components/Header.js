@@ -8,8 +8,6 @@ const Header = () => {
   const dispatch = useDispatch();
   let history = useHistory();
 
-  const cart = useSelector((state) => state.cart);
-  const { cartItems } = cart;
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
@@ -32,22 +30,21 @@ const Header = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-6 d-flex align-items-center display-none">
-              <p>0866608666</p>
-              <p>dhcn@gmail.com</p>
+              <p>B2B Ecommerce Platform for Fashion</p>
             </div>
             <div className=" col-12 col-lg-6 justify-content-center justify-content-lg-end d-flex align-items-center">
-              <Link to="https://www.facebook.com/NHVLCN">
-                <i className="fab fa-facebook-f"></i>
-              </Link>
-              <Link to="https://www.instagram.com/">
+              <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-facebook"></i>
+              </a>
+              <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-instagram"></i>
-              </Link>
-              <Link to="https://www.linkedin.com/">
+              </a>
+              <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-linkedin-in"></i>
-              </Link>
-              <Link to="https://www.youtube.com/?reload=9">
+              </a>
+              <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-youtube"></i>
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -60,9 +57,7 @@ const Header = () => {
             <div className="container ">
               <div className="row ">
                 <div className="col-6 d-flex align-items-center">
-                  <Link className="navbar-brand" to="/">
-                    <img alt="logo" src="/images/logo.png" />
-                  </Link>
+                  
                 </div>
                 <div className="col-6 d-flex align-items-center justify-content-end Login-Register">
                   {userInfo ? (
@@ -112,11 +107,6 @@ const Header = () => {
                       </div>
                     </div>
                   )}
-
-                  <Link to="/cart" className="cart-mobile-icon">
-                    <i className="fas fa-shopping-bag"></i>
-                    <span className="badge">{cartItems.length}</span>
-                  </Link>
                 </div>
                 <div className="col-12 d-flex align-items-center">
                   <form onSubmit={submitHandler} className="input-group">
@@ -139,9 +129,7 @@ const Header = () => {
           <div className="pc-header">
             <div className="row">
               <div className="col-md-3 col-4 d-flex align-items-center">
-                <Link className="navbar-brand" to="/">
-                  <img alt="logo" src="/images/logo.png" />
-                </Link>
+          
               </div>
               <div className="col-md-6 col-8 d-flex align-items-center">
                 <form onSubmit={submitHandler} className="input-group">
@@ -188,11 +176,6 @@ const Header = () => {
                     <Link to="/login">Login</Link>
                   </>
                 )}
-
-                <Link to="/cart">
-                  <i className="fas fa-shopping-bag"></i>
-                  <span className="badge">{cartItems.length}</span>
-                </Link>
               </div>
             </div>
           </div>

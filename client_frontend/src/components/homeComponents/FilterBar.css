@@ -1,44 +1,20 @@
-/* <div>
-      <span className="filter-bar">Filter</span>
-      <div className="filter-by-option">
-        <div className="filter-by-option__item">
-          <span className="filter-by-option__item__title">Name</span>
-          <input
-            type="text"
-            className="form-control"
-            id="name"
-            value={filters.name}
-            onChange={handleInput("name")}
-          />
-        </div>
-        <div className="filter-by-option__item">
-            <span className="filter-by-option__item__title">Price</span>
-            <input
-                type="text"
-                className="form-control"
-                id="price"
-                value={filters.price}
-                onChange={handleInput("price")}
-            />
-        </div>
-      </div>
-    </div> */
-
-/* I want filter-bar is the same row with other */
-
 .filter-bar {
-  display: inline-block;
+  display: flex;
+  justify-content: space-between; /* Space items evenly */
+  align-items: center; /* Center items vertically if needed */
   margin: 10px;
   margin-left: 50px;
+  width: calc(100% - 50px); /* Adjust for the left margin */
 }
 
 .filter-by-option {
-  display: inline-block;
-  margin: 10px;
+  flex: 1; /* Each option will take up equal space */
+  text-align: center; /* Center text within each option */
+  margin: 0 10px; /* Optional: Horizontal margins between items */
 }
 
 .filter-by-option__item {
   display: inline-block;
   margin: 10px;
+  width: 12.5%; /* Items take full width of their container */
 }
-

@@ -2,19 +2,21 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Rating from "../components/homeComponents/Rating";
 import { useDispatch, useSelector } from "react-redux";
-import { recommendProduct } from "../Redux/Actions/ProductActions";
+import { listProduct, recommendProduct } from "../Redux/Actions/ProductActions";
 import Loading from "../components/LoadingError/Loading";
 import Message from "../components/LoadingError/Error";
 const RecommendProducts = (props) => {
-    const { keyword } = props;
+  const {keyword, pagenumber} = props
   const dispatch = useDispatch();
-  const productRecommend = useSelector((state) => state.productRecommend);
-  const { loading, error, products } = productRecommend;
-    
+
+  const productList = useSelector((state) => state.productList);
+  const { loading, error, products, page, pages } = productList;
 
   useEffect(() => {
-    dispatch(recommendProduct(keyword));
-  }, [dispatch, keyword]);
+    dispatch(listProduct(keyword, pagenumber));
+  }, [dispatch, keyword, pagenumber]);
+
+
   return (
     <>
       <div className="container">
@@ -53,7 +55,7 @@ const RecommendProducts = (props) => {
                               value={product.rating}
                               text={`${product.numReviews} reviews`}
                             />
-                            <h3>${product.price}</h3>
+                            <h3>{`Brand: ${product.Brand}`}</h3>
                           </div>
                         </div>
                       </div>
@@ -61,12 +63,6 @@ const RecommendProducts = (props) => {
                   </>
                 )}
                 
-                {/* Pagination */}
-                {/* <Pagination
-                  pages={pages}
-                  page={page}
-                  keyword={keyword ? keyword : ""}
-                /> */}
               </div>
             </div>
           </div>
